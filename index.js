@@ -7,7 +7,7 @@ const User1 = require('./Usermodule/UserSchema')
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 app.use(cors({
     origin: process.env.ALLOWED_ORIGIN,
     credentials: true

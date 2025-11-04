@@ -10,21 +10,22 @@ const app = express();
 const PORT = process.env.PORT;
 const allowedOrigins = [
   "https://prot-na73.vercel.app",
-  "https://prot-na73-m8ydjl8zk-irfan-aslams-projects-8574b73b.vercel.app"
+  "https://prot-na73-git-main-irfan-aslams-projects-8574b73b.vercel.app",
+  "https://prot-na73-gsnwd776j-irfan-aslams-projects-8574b73b.vercel.app"
+  
 ];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error("Not allowed by CORS"));
-      }
-    },
-    credentials: true,
-  })
-);
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true,
+}));
+
 app.use(express.json());
 connectDB()
 app.get("/api/sendkey", (req, res) => {

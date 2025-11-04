@@ -8,10 +8,23 @@ dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT;
-app.use(cors({
-    origin: process.env.ALLOWED_ORIGIN,
-    credentials: true
-}));
+const allowedOrigins = [
+  "https://prot-na73.vercel.app",
+  "https://prot-na73-m8ydjl8zk-irfan-aslams-projects-8574b73b.vercel.app"
+];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
 app.use(express.json());
 connectDB()
 app.get("/api/sendkey", (req, res) => {

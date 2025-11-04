@@ -11,7 +11,9 @@ const PORT = process.env.PORT;
 
 
 app.use(cors({
-  origin:"https://prot-na73.vercel.app/"
+  origin: "https://prot-na73.vercel.app",
+  methods: ["GET", "POST"],
+  allowedHeaders: ["Content-Type", "Authorization"]
 }));
 
 app.use(express.json());
